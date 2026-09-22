@@ -55,14 +55,23 @@ bun run build-win:x64
 Quotes wrap the whole assignment — `set VAR="value"` puts them inside the value.
 Put the vars and the build in one `.bat`; a new terminal loses them.
 
-## Publish
+## Release
+
+Bump first — artifact names and `latest*.yml` both read this version.
 
 ```bash
-gh release create v2.2.2 --repo miasolution2024/mia-aionui-releases \
-  out/AionUi-2.2.2-mac-arm64.dmg out/AionUi-2.2.2-mac-arm64.zip out/latest-mac.yml
+npm version 2.2.3 --no-git-tag-version   # root package.json
+```
+
+Build (above), then publish on a tag matching the version:
+
+```bash
+gh release create v2.2.3 --repo miasolution2024/mia-aionui-releases \
+  out/AionUi-2.2.3-mac-arm64.dmg out/AionUi-2.2.3-mac-arm64.zip out/latest-mac.yml
 ```
 
 `.exe` + `latest.yml` go on the **same tag**. Keep the `.zip` — the updater uses it.
+Leave `packages/desktop/package.json` at `0.0.0`; it is not read.
 
 ## Signing
 
