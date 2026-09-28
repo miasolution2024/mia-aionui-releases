@@ -67,8 +67,14 @@ Build (above), then publish on a tag matching the version:
 
 ```bash
 gh release create v2.2.3 --repo miasolution2024/mia-aionui-releases \
-  out/PIA-Cowork-2.2.3-mac-arm64.dmg out/PIA-Cowork-2.2.3-mac-arm64.zip out/latest-mac.yml
+  out/PIA-Cowork-2.2.3-mac-arm64.dmg out/PIA-Cowork-2.2.3-mac-arm64.zip \
+  out/latest-mac.yml out/latest-arm64-mac.yml
 ```
+
+`latest-arm64-mac.yml` is not optional. Apple Silicon builds run on the
+`latest-arm64` channel, so the app asks the newest release for that exact name;
+without it every startup check 404s and no update is ever offered, silently. The
+build writes it next to `latest-mac.yml`.
 
 `.exe` + `latest.yml` go on the **same tag**. Keep the `.zip` — the updater uses it.
 Leave `packages/desktop/package.json` at `0.0.0`; it is not read.
