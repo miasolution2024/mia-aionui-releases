@@ -6,11 +6,11 @@ Private repo → downloads work inside the org only, auto-update is off.
 
 ```bash
 # macOS — after dragging to Applications
-xattr -dr com.apple.quarantine /Applications/AionUi.app
+xattr -dr com.apple.quarantine /Applications/pia-cowork.app
 ```
 ```powershell
 # Windows — or click More info → Run anyway
-Unblock-File -Path .\AionUi-2.2.2-win-x64.exe
+Unblock-File -Path .\PIA-Cowork-2.2.3-win-x64.exe
 ```
 
 ## Build — common
@@ -67,7 +67,7 @@ Build (above), then publish on a tag matching the version:
 
 ```bash
 gh release create v2.2.3 --repo miasolution2024/mia-aionui-releases \
-  out/AionUi-2.2.3-mac-arm64.dmg out/AionUi-2.2.3-mac-arm64.zip out/latest-mac.yml
+  out/PIA-Cowork-2.2.3-mac-arm64.dmg out/PIA-Cowork-2.2.3-mac-arm64.zip out/latest-mac.yml
 ```
 
 `.exe` + `latest.yml` go on the **same tag**. Keep the `.zip` — the updater uses it.
