@@ -34,6 +34,7 @@ export MIA_CLOUD_URL="https://mia-second-brain.miaai.io.vn"
 export ANALYTICS_ENDPOINT="https://mia-second-brain.miaai.io.vn/api/events"
 export ANALYTICS_INGEST_KEY="<server's ANALYTICS_INGEST_KEYS>"
 export LOGGING_ENDPOINT="https://mia-second-brain.miaai.io.vn/api/logs"
+export SENTRY_DSN="<Sentry → Settings → Projects → pia-cowork → Client Keys>"
 
 bun run build-mac:arm64     # Apple Silicon
 bun run build-mac:x64       # Intel
@@ -48,12 +49,15 @@ set "MIA_CLOUD_URL=https://mia-second-brain.miaai.io.vn"
 set "ANALYTICS_ENDPOINT=https://mia-second-brain.miaai.io.vn/api/events"
 set "ANALYTICS_INGEST_KEY=<server's ANALYTICS_INGEST_KEYS>"
 set "LOGGING_ENDPOINT=https://mia-second-brain.miaai.io.vn/api/logs"
+set "SENTRY_DSN=<Sentry → Settings → Projects → pia-cowork → Client Keys>"
+set "RUSTFLAGS=-C target-feature=+crt-static"
 
 bun run build-win:x64
 ```
 
 Quotes wrap the whole assignment — `set VAR="value"` puts them inside the value.
 Put the vars and the build in one `.bat`; a new terminal loses them.
+Without `RUSTFLAGS`, aioncore needs `VCRUNTIME140.dll` and fails to start on a clean Windows.
 
 ## Release
 
